@@ -82,4 +82,13 @@ app.put('/cards/:id', function (req, res, next) {
     .then(null, next);
 });
 
+app.get('/cards/:id', function (req, res, next) {
+    var _id = req.params.id;
 
+    FlashCardModel.findById(_id).exec()
+    .then(function (foundCard) {
+        console.log("Server doing something: card is ", foundCard)
+        res.json(foundCard);
+    })
+
+})

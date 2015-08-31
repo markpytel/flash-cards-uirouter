@@ -22,8 +22,15 @@ app.config(function ($stateProvider){
 	}).state('managecard.edit', {
 		url: '/edit',
 		templateUrl: '/views/edit.html',
-		controller: function($scope, $stateParams){
-			console.log("stateParams: " , $stateParams);
+		controller: function($scope, $stateParams, $http){
+			
+			$http.get('/cards/'+$stateParams.id)
+			.then(function(response){
+				$scope.card = response.data;
+				console.log($scope.card);
+			})
+
+			
 		}
 	}).state('managecard.delete', {
 		url: '/delete',

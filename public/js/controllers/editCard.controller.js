@@ -1,9 +1,10 @@
-app.controller('EditCardController', function ($scope, FlashCardsFactory) {
+app.controller('EditCardController', function ($state, $scope, FlashCardsFactory) {
 	$scope.categories = FlashCardsFactory.categories;
-	$scope.saveCard = function () {
-		FlashCardsFactory.updateCard($scope.card)
+	$scope.saveCard = function (card) {
+		FlashCardsFactory.updateCard(card)
 		.then(function (updatedCard) {
 			$scope.$parent.editing = false;
+			$state.go('flashcards');
 		});
 	};
 });

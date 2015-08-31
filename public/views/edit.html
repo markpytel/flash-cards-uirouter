@@ -1,6 +1,6 @@
   <!-- <div ng-show="editing" ng-controller="EditCardController"> -->
   <div> 
-      <form name="cardForm" ng-submit="cardForm.$valid && saveCard()" novalidate>
+      <form name="cardForm" ng-submit="cardForm.$valid && saveCard(card)" novalidate>
           <h3>question</h3>
           <p ng-show="cardForm.questionField.$error.required">Question is a required field</p>
           <p ng-show="cardForm.questionField.$error.minlength">Question is too short</p>

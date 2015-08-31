@@ -15,9 +15,24 @@ app.config(function ($stateProvider){
 		url: '/makecard',
 		templateUrl: '/views/makecard.html',
 		controller: 'NewCardController'
-	});
+	}).state('managecard', {
+		url: '/managecard/:id',
+		templateUrl: '/views/managecard.html',
+		controller: 'EditCardController'
+	}).state('managecard.edit', {
+		url: '/edit',
+		templateUrl: '/views/edit.html',
+		controller: function($scope, $stateParams){
+			console.log("stateParams: " , $stateParams);
+		}
+	}).state('managecard.delete', {
+		url: '/delete',
+		templateUrl: '/views/deletecard.html'
+
+	})
 
 });
+
 
 
 

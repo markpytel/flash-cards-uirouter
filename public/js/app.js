@@ -23,18 +23,21 @@ app.config(function ($stateProvider){
 		url: '/edit',
 		templateUrl: '/views/edit.html',
 		controller: function($scope, $stateParams, $http){
-			
 			$http.get('/cards/'+$stateParams.id)
 			.then(function(response){
 				$scope.card = response.data;
 				console.log($scope.card);
 			})
-
-			
 		}
 	}).state('managecard.delete', {
 		url: '/delete',
-		templateUrl: '/views/deletecard.html'
+		templateUrl: '/views/deletecard.html',
+		controller: function($scope, $stateParams, $http){
+			$http.delete('/cards/'+$stateParams.id)
+			.then(function(){
+				console.log("Card Deleted");
+			})
+		}
 
 	})
 

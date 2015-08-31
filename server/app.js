@@ -92,3 +92,15 @@ app.get('/cards/:id', function (req, res, next) {
     })
 
 })
+
+app.delete('/cards/:id', function (req, res, next) {
+    var _id = req.params.id;
+
+    FlashCardModel.remove({_id: _id}).exec()
+    .then(function () {
+        console.log("Card removed from database");
+        res.status(200);
+        res.end();
+    })
+
+})
